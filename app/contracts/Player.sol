@@ -1,5 +1,4 @@
-pragma solidity ^ 0.4 .21;
-//import "./Token.sol";
+pragma solidity ^0.4.23;
 
 contract PlayerContract
 {
