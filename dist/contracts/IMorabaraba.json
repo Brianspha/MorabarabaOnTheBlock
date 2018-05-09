@@ -1,0 +1,154 @@
+{
+  "contract_name": "IMorabaraba",
+  "code": "",
+  "runtime_bytecode": "",
+  "real_runtime_bytecode": "",
+  "swarm_hash": "",
+  "gas_estimates": {
+    "creation": {},
+    "external": {},
+    "internal": {}
+  },
+  "function_hashes": {
+    "CheckForMill()": "d59fa0cd",
+    "MakeMill(address)": "bee0c50a",
+    "MakeMove(address,uint8)": "637b4a6c",
+    "NewGame(address,address)": "d1af9b11",
+    "ShootCow()": "ce827f14",
+    "UpdatePlayerMills(address)": "d699a10d",
+    "UpdatePlayerState(address)": "34482d02"
+  },
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "id",
+          "type": "address"
+        }
+      ],
+      "name": "UpdatePlayerState",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "name": "position",
+          "type": "uint8"
+        }
+      ],
+      "name": "MakeMove",
+      "outputs": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "playerId",
+          "type": "address"
+        }
+      ],
+      "name": "MakeMill",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "ShootCow",
+      "outputs": [
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "p1",
+          "type": "address"
+        },
+        {
+          "name": "p2",
+          "type": "address"
+        }
+      ],
+      "name": "NewGame",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "CheckForMill",
+      "outputs": [
+        {
+          "name": "found",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "id",
+          "type": "address"
+        }
+      ],
+      "name": "UpdatePlayerMills",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+}

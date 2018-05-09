@@ -58,9 +58,10 @@ uint8 constant Moving=1;
 uint8 constant Stationary=0;
 uint256 SessionIdCount=0;
 PossibleMills tempPossible;
-
+Board brd = Board(24,true,tempPossible);
+event CreatedNewGame (string message);
 //@Dev Constructor
-function MorabarabaContract()
+function Constructor() private
 {
     require(!tempPossible.Activated);
     tempPossible = PossibleMills(true,60);
@@ -131,10 +132,11 @@ function MorabarabaContract()
     }
 }
 //@Dev Responsible for starting a new game 
-function NewGame(address one,address two) returns (bool success)
+function NewGame(address one,address two) public returns (bool success)
 {
   require(one !=address(0));
   require (two != address(0));//Malicious address
+  require(one != two);//Ensure player doesnt play against himself
   SessionPlayer memory p1 = SessionPlayer(one,12,0,0,0);
   SessionPlayer memory p2 = SessionPlayer(two,12,0,0,0);
   Node []  memory nodes =new Node[](24);
@@ -143,13 +145,13 @@ function NewGame(address one,address two) returns (bool success)
       Node memory temp = Node(i,false);
       nodes[i]=temp;
   }
-  Board memory brd = Board(24,true,tempPossible);
   for(uint8 a=0;a<24;a++)
   {
       brd.InternalBoard[a]=nodes[a];
   }
   currentGameSession=Morabaraba(p1,p2,brd,one,two,SessionIdCount++);
   success =true;
+
 }
 
 
