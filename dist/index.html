@@ -1,11 +1,460 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
   <head>
-    <title>Embark</title>
-    <link rel="stylesheet" href="css/app.css">
-    <script src="js/app.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Morabaraba</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/agency.min.css" rel="stylesheet">
+
   </head>
-  <body>
-    <h3>Welcome to Embark!</h3>
-    <p>See the <a href="http://embark.readthedocs.io/en/latest/index.html" target="_blank">Embark's documentation</a> to see what you can do with Embark!</p>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Morabaraba</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#Register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#Login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#Play">Play</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#About">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">Welcome To Morabaraba on the Blockchain!</div>
+          <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Play</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Register -->
+    <section id="Register">
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">Register</h2>
+              </div>
+        <div class="clearfix"></div>
+          <div class="col-lg-12 text-center">
+            <form id="contactForm" name="sentMessage" novalidate="novalidate">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input class="form-control" id="address" type="text" placeholder="Your Address e.g. 0x0a... *" required="required" data-validation-required-message="Please enter your address to be used for indentification.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" id="pass" type="password" placeholder="Please enter your disired password minimum length is 8*" required="required" data-validation-required-message="Please enter a desired password to be used for future use of the website.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" id="pass1" type="password" placeholder="Retype password *" required="required" data-validation-required-message="Please enter a password for future use.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-12 text-center">
+                  <div id="success"></div>
+                  <button id="Register" class="btn btn-primary btn-xl text-uppercase" type="submit">Register</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!--Login -->
+<section id="Login">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-12 text-center">
+              <h2 class="section-heading text-uppercase">Login</h2>
+            </div>
+      <div class="clearfix"></div>
+        <div class="col-lg-12 text-center">
+          <form id="contactForm" name="sentMessage" novalidate="novalidate">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input class="form-control" id="address" type="text" placeholder="Your Address e.g. 0x0a... *" required="required" data-validation-required-message="Please enter your address to be used for indentification.">
+                  <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" id="pass" type="password" placeholder="Enter password" required="required" data-validation-required-message="Password not entered.">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="col-lg-12 text-center">
+                <div id="success"></div>
+                <button id="Register" class="btn btn-primary btn-xl text-uppercase" type="submit">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- About Grid -->
+ <section class="bg-light" id="About">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">About</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 About-item">
+          <a class="About-link" data-toggle="modal" href="#AboutModal1">
+            <div class="About-hover">
+              <div class="About-hover-content">
+                <i class="fa fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/about3.jpg" alt="">
+          </a>
+          <div class="About-caption">
+            <h4>History</h4>
+            <p class="text-muted">Read more</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 About-item">
+            <a class="About-link" data-toggle="modal" href="#AboutModal2">
+              <div class="About-hover">
+                <div class="About-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/about2.jpg" alt="">
+            </a>
+            <div class="About-caption">
+              <h4>History</h4>
+              <p class="text-muted">Read more</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 About-item">
+              <a class="About-link" data-toggle="modal" href="#AboutModal3">
+                <div class="About-hover">
+                  <div class="About-hover-content">
+                    <i class="fa fa-plus fa-3x"></i>
+                  </div>
+                </div>
+                <img class="img-fluid" src="img/portfolio/about1.jpg" alt="">
+              </a>
+              <div class="About-caption">
+                <h4>How to Play!</h4>
+                <p>Read More</p>
+              </div>
+            </div>
+      </div>
+    </div>
+    </section>
+
+<!-- Play -->
+<section id="Play">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-12 text-center">
+              <h2 class="section-heading text-uppercase">Play</h2>
+            </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Morabaraba 2018</span>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- About Modals -->
+    <!-- Modal 1 -->
+    <div class="About-modal modal fade" id="AboutModal1" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2 class="text-uppercase">Morabaraba</h2>
+                  <img class="img-fluid d-block mx-auto" src="img/portfolio/about3.jpg" alt="">
+                  <p>Morabaraba is an ancient and traditional African board game that has been played for thousands of years. Its origins predate recorded history in Africa. Today, Morabaraba is played in several countries — there is even a World Championship and South African players have been awarded national colours. It has been claimed that approximately 40% of South Africans know how to play Morabaraba — which would be about 20-m people!
+
+                    Morabaraba is an accessible game that is easy to learn, although its strategic and tactical aspects run deep. While it may be played on specially-produced boards (or computer software) with special counters, it is simple enough that a board can easily be scratched on a stone or into sand, with coins or pebbles, or whatever comes to hand, used as the pieces.
+                    
+                    It is far easier to learn than chess or draughts and the rules can be internalised in a mere few minutes. The game is, however, not just a variation of noughts and crosses and has been described as subtle and thought-provoking.
+                    
+                    On the surface this popular game seems to be a simple variant of the European game Nine Men’s Morris (also known as Muehle, Mill or Merelles). On closer scrutiny it seems more likely that Morabaraba evolved from Mancala games, known to date back to ancient Egypt. A Morabaraba board has actually been found carved into the Great Pyramid of Khufu. One can only speculate as to whether the board was perhaps placed there for the Pharaoh to use in his afterlife, or maybe for the relaxation purposes of the stonemasons. If the board is indeed the same age as the pyramid then the game could be dated back to 2560 BC!
+                    
+                    Closer to home, Morabaraba boards that are 800 years old have been found at Mapungubwe in South Africa.
+                    
+                    Morabaraba, derived from the English Morris, is its Shangaan name and the one which has come to be actively used in promoting the game. In South Africa it is also commonly known by the Xhosa form of the name umlabalaba. The name is ultimately derived from Latin merellus meaning a gaming counter. In the traditional European game the counters are commonly referred to as “men”, but in the South African version the counters are referred to as “cows”, the game being particularly popular amongst youth who herd cattle.
+                    
+                    Over the centuries Morabaraba has played an important role in African culture, and has been used to teach herdboys an appreciation for tactical thinking, as well as evaluating the strategic skills of a chief’s advisers. The game is taken very seriously by its players and, according to legend, African chiefs would select the best Morabaraba players as their advisors and council members! With a recent revival of interest in traditional African culture, Morabaraba is being well received, and is thus being promulgated by many organisations, as well as the department of Sport and Recreation SA (SRSA) as part of the annual Indigenous Games tournaments supported by the department.
+                    
+                    Building a New Identity
+                    The game obtained official recognition from SRSA, as well as the National Sports Commission (NSC), SASCOCs predecessor, in 1996. Thus, South Africans may obtain Protea colours in the sport.
+                    
+                    Mind Sports South Africa (MSSA) has taken on the mandate of putting Morabaraba on a sound sporting footing in South Africa and internationally. They promulgated a standard set of rules, and organise tournaments at regional, national and international levels. They also designed, and registered, a Morabaraba board and counters that have to be used in all official local and international competitions: the board has annotations along the side and the MSSA logo appears on the board and counters.
+                    
+                    According to Colin Webster, president of MSSA, the organisation’s members have invested financially, and through devoting their time, to the development of the game. This has resulted in regular, and very successful, tournaments being held across SA, helping to popularise the traditional game with a new generation of players, he says. They run an annual championship for mineworkers, as well as the SA national and provincial championships, school national and provincial championships, and inter-school leagues.
+                    
+                    In order to qualify for the national team trials, a player has to finish in the top 20% or top 3, whichever is greater, of a recognised provincial and/or national championship. The national team is then selected at the national team trials. Any registered player can enter the provincial and national championships.
+                    
+                    MSSA is affiliated to the International Wargames Federation, which allowed for the establishment of an official Morabaraba World Championship.
+                    
+                    Webster claims that through MSSA the game has grown enormously in both numbers and stature.
+                    
+                    “Not only has a player (David Hlophe) received the President’s Award — Silver Class — in 2002, but there are now universities, like the University of Johannesburg, that offer bursaries to players who excel in the game,” says Webster.
+                    
+                    “From having argued with the NSC in 1996 to have Morabaraba recognised as a sport, it is most rewarding to see the joy on the faces of players receiving provincial and national colours.”
+                    
+                    According to a report published in the Sowetan, it is estimated that as many as 40% of all South Africans have at some stage played Morabaraba on a recreational basis. Webster points out that the competitive field is a lot smaller. “The largest entry that the MSSA has ever had in any one year is 36 000,” he says.
+                    
+                    While the official boards with notation must be used in all the MSSA-organised Morabaraba championships and international competitions, there are millions of South Africans that play Morabaraba on a non-competitive basis, even if the Sowetan estimate is only half correct. When Morabaraba is played for leisure, any board and counter may be used — whether self-made, or supplied by the growing number of distributors supplying retailers. Which can translate into sales of thousands of boards, even if only 10% players choose to buy a board, instead of drawing their own.
+                    
+                    Webster is excited that the game is growing every year on a global level. “There is no doubt that with the right support, Morabaraba can be one of the biggest games in the world,” he says.</p>
+                  <ul class="list-inline">
+                    <li>Date: May 2018</li>
+                  </ul>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="About-modal modal fade" id="AboutModal2" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2 class="text-uppercase">Rules</h2>
+                  <img class="img-fluid d-block mx-auto" src="img/portfolio/about2.jpg" alt="">
+                  <p><b>General:</b><br>
+ 
+                      1.	The rules for the version, as depicted in the above image, are known as the Generally Accepted Rules (GAR).
+                      2.	For competition play, the board may be made of any material as long as the board has the approved notation.
+                      3.	Board sizes are:
+                      •	For Provincial and National Championships – 490mm x 490mm (Cows being 45mm in diameter and 5mm in depth), and
+                      •	All other competitions – 300mm x 300mm (Cows being 30mm in diameter and 10mm in depth).
+                      4.	All cows shall have the MSSA logo on the cow.
+                      5.	There are 24 junctions on the board.
+                      6.	Each player is issued with a set of 12 cows. One set being of a dark colour, and one set being of a light colour.
+                      7.	The colour white may not be used for cows as the colour may confuse players as to whether a cow has been placed.
+                      8.	Only players who have won the MSSA's national championships, or who have received Protea Colours for the game of Morabaraba, may use cows which are green in colour. Such cows are awarded by the MSSA in numbered sets. Such players have the right to use such cows instead of any such cows as supplied by any Tournament organiser in any event falling under the jurisdiction of the MSSA.
+                      9.	The outside ring is known as the “Exterior Ring” and the junctions are numbered clockwise from from the top left hand corner E1 to E8.
+                      10.	The middle ring is known as the “Principle Ring” and the junctions are numbered clockwise from from the top left hand corner A1 to A8.
+                      11.	The inner ring is known as the “Restricted Ring” and the junctions are numbered clockwise from from the top left hand corner R1 to R8.
+                      12.	The notation was developed for the MSSA by Dr. Evgenii Rabiner.
+                      13.	Notation shall be scored as follows:
+                      •	When placing cows – just write the junction's address, that is “A1”, or “E5”, etc.
+                      •	When moving cows – write down the initial junction's address with a hyphen and then the final function's address, for example: “A1 – A8”
+                      •	When moving a cow to form a line and 'shooting' one of your opponent's cows, write down the initial junction's address with a hyphen an then the final function's address a multiplication sign and the address of the cow that has just been 'shot', for example: “A1 – A8 x E1”
+                      •	Notation of a typical game may appear as follows:
+                      
+                      
+                      </p>
+                  <ul class="list-inline">
+                    <li>Date: May 2018</li>
+                  </ul>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- Modal 2 -->
+    <div class="About-modal modal fade" id="AboutModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+              <div class="lr">
+                <div class="rl"></div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 mx-auto">
+                  <div class="modal-body">
+                    <!-- Project Details Go Here -->
+                    <h2 class="text-uppercase">How to Play</h2>
+                    <img class="img-fluid d-block mx-auto" src="img/portfolio/about1.jpg" alt="">
+                    <p><b>How to play:</b><br>
+
+                        <i>Play consists of three stages:</i>
+                         
+                        Stage 1:
+                        
+                        •	Each player starts with 12 tokens called "cows". 
+                        
+                        •	The player who has been allocated the dark colour begins.
+                        
+                        •	Starting with a clear board, each player alternatively places one cow at a time on a junction (circle). The aim is to create rows of three, either vertically, diagonally, or horizontally. Cows may only be placed on unoccupied junctions. 
+                        
+                        •	When three-in-a-row is achieved, the player may remove (shoot) one of the opponent's cows. A player can not shoot an opponent's "three-in-a-row" cows if there are other cows on the board left to shoot. 
+                        
+                        •	Only one of the opponent's cows may be shot at a time, even if two (or more) lines of three-in-a-row are achieved with one move. 
+                        
+                        •	Once a cow is shot, it shall not be used in play again.
+                         
+                        Stage 2 
+                        
+                        •	When all twelve cows of each player have been placed on the board, cows may be moved from one junction to another. A move consists of moving a cow from one junction to an unoccupied junction immediately linked and adjacent to that junction. 
+                        
+                        •	Players may break their own lines of three-in-a-row in order to make new lines, or simply reposition their cows. 
+                        
+                        •	Cows may be moved back and forth to the same two junctions repeatedly. A three-in-a-row may be made, broken and remade repeatedly. 
+                         
+                        •	Notwithstanding the rule that lines may be broken and remade repeatedly, if a player breaks a line to immediately create a new line of three ‘cows’, such player may not move such cow back to the original junction in his/her next move, if it creates a new line. 
+                        
+                        For example:
+                        
+                        Should a player have a ‘cow’ on the junction marked E6, such player may move it to the junction marked as A6 to immediately create a new line. However, in such player’s next move, he/she may not move the cow back to A6, instead, such player must do another move before moving the cow back to E6 to immediately create a new line. 
+                         
+                        
+                        •	Each time a three-in-a-row is remade, an opponent's cow shall be shot. 
+                        
+                        
+                         Stage 3
+                        
+                        •	When a player has lost all but three cows, then a player may move a cow to any vacant junction on the board with each move. 
+                         
+                        Winning the game 
+                        
+                        •	The game is won when the opponent cannot move any cows: or when the opponent has lost all but two cows. 
+                        
+                        •	When a player is down to three cows, and neither player is able to shoot an opponent's cow within ten moves, the game is a draw.
+                        
+                        
+                        </p>
+                    <ul class="list-inline">
+                      <li>Date: May 2018</li>
+                    </ul>
+                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                      <i class="fa fa-times"></i>
+                      Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+
   </body>
+
 </html>

@@ -135,5 +135,31 @@
       }
     },
     "name": "development"
+  },
+  "0xcfc16986dbc5ddb520220d13e6d774dbe1eda15d0c60af71ed5dec49c8e742df": {
+    "contracts": {
+      "0x891720967bbf9f0a6b56a3a76939f6488dc42fcc8c8e5036a0f1703ecd3caae3": {
+        "name": "MorabarabaContract",
+        "address": "0x25e1fa58cc1eab41cdc0bd5b1db2c92df6aff309"
+      },
+      "0x80f6ab9a4ef1deeda306ce9d97ba5cb2d3815b138ba253541fd6221808a97603": {
+        "name": "PlayerContract",
+        "address": "0x44e3b47363dc3e6777a19de9c72213918b243f8f"
+      }
+    },
+    "name": "development"
+  },
+  "0xadbd5af1272a11bb98ee8c9591ae2d05c76365b40f59f4036f9ed406a9e943c6": {
+    "contracts": {
+      "0x891720967bbf9f0a6b56a3a76939f6488dc42fcc8c8e5036a0f1703ecd3caae3": {
+        "name": "MorabarabaContract",
+        "address": "0xb50721b74d41ee000c7ae2e0df6896c99d98cc39"
+      },
+      "0x80f6ab9a4ef1deeda306ce9d97ba5cb2d3815b138ba253541fd6221808a97603": {
+        "name": "PlayerContract",
+        "address": "0x0689d19a340c56acd535b76d20c05ca631f8ac73"
+      }
+    },
+    "name": "development"
   }
 }
