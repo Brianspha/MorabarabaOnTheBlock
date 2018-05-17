@@ -22,7 +22,23 @@
 
     <!-- Custom styles for this template -->
     <link href="css/agency.min.css" rel="stylesheet">
+   
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+  
+    <!--Script for Morabaraba -->
+ <script src="js/app.js"></script>
+ 
   </head>
 
   <body id="page-top">
@@ -60,7 +76,7 @@
         <div class="intro-text">
           <div class="intro-lead-in">Welcome To Morabaraba on the Blockchain!</div>
           <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Play</a>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#Register">Play</a>
         </div>
       </div>
     </header>
@@ -81,7 +97,7 @@
                     <input class="form-control" id="address" type="text" placeholder="Your Address e.g. 0x0a... *" required="required" data-validation-required-message="Please enter your address to be used for indentification.">
                     <p class="help-block text-danger"></p>
                   </div>
-                  <div class="form-group">
+                 <!-- <div class="form-group">
                     <input class="form-control" id="pass" type="password" placeholder="Please enter your disired password minimum length is 8*" required="required" data-validation-required-message="Please enter a desired password to be used for future use of the website.">
                     <p class="help-block text-danger"></p>
                   </div>
@@ -89,7 +105,7 @@
                     <input class="form-control" id="pass1" type="password" placeholder="Retype password *" required="required" data-validation-required-message="Please enter a password for future use.">
                     <p class="help-block text-danger"></p>
                   </div>
-                </div>
+                </div> -->
                 <div class="clearfix"></div>
                 <div class="col-lg-12 text-center">
                   <div id="success"></div>
@@ -118,10 +134,10 @@
                   <input class="form-control" id="address" type="text" placeholder="Your Address e.g. 0x0a... *" required="required" data-validation-required-message="Please enter your address to be used for indentification.">
                   <p class="help-block text-danger"></p>
                 </div>
-                <div class="form-group">
+              <!--  <div class="form-group">
                   <input class="form-control" id="pass" type="password" placeholder="Enter password" required="required" data-validation-required-message="Password not entered.">
                   <p class="help-block text-danger"></p>
-                </div>
+                </div> -->
               </div>
               <div class="clearfix"></div>
               <div class="col-lg-12 text-center">
@@ -196,10 +212,26 @@
       <div class="row">
           <div class="col-lg-12 text-center">
               <h2 class="section-heading text-uppercase">Play</h2>
+              <div class="About-modal modal fade" id="AboutModal4" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                          <div class="rl"></div>
+                        </div>
+                      </div>
+              <div class="mid">
+                <canvas height="550" width="550" id="myCanvas">
+                    Your browser does not support the HTML5 canvas tag.
+                </canvas>
+             </div>
             </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
     <!-- Footer -->
     <footer>
@@ -441,19 +473,6 @@
         </div>
       </div>
   
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Contact form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/agency.min.js"></script>
 
   </body>
 
