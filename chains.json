@@ -1,176 +1,39 @@
 {
-  "0x8f32700650e4012ca28fc4ce440cefcd829757e0656dc15a95046f181a12bb24": {
+  "0x112e06463898b39bff75755f44cf0e60f0ce93b3e6dda89e98f0edb0afd0e799": {
     "contracts": {
-      "0x19f6db88b6e7eefccd57695b3788091584b53e5200dbc689cd56b337d32f9f22": {
+      "0x3f5c66e8696181becd00228de2f6464f5fbfcffee6d4eb4c9985b28e46e1467c": {
+        "name": "MorabarabaContract",
+        "address": "0x0cFeED1a37657E8C57D45fC0B3e76523DEDcC725"
+      },
+      "0x54cb1913e2788d12c7f7b8a1ac515caa06996aa019847fbfb3bb7b81301680d6": {
         "name": "PlayerContract",
-        "address": "0xc26cefd245f7e2b2801e5c2cee12ec2072362601"
-      },
-      "0xe4cea3b07112564ee9f4c2531bfe66919cccf73d42d6e6d1b7a8fdba4a3f1aa7": {
-        "name": "PlayerContract",
-        "address": "0xbfdda2248a286224bef8a49db3104479411d902e"
-      },
-      "0xf1c9ecf3104930799af211f27abac70b9a5b6790b11b2989da7a557b3028c49d": {
-        "name": "PlayerContract",
-        "address": "0x915ab65d97931f145d1b1ac49992b47659d8a9b1"
-      },
-      "0x8fe5a2ca23ac2e97a4f68e725f8f89aeef795b1cf57548fb56907bb365593364": {
-        "name": "Morabaraba",
-        "address": "0x0a7f329727d420da6bbd5e0d502a3e62130c7221"
-      },
-      "0x80f6ab9a4ef1deeda306ce9d97ba5cb2d3815b138ba253541fd6221808a97603": {
-        "name": "PlayerContract",
-        "address": "0xe71d4ff7f2aa0a541d4dc15f2b127dd9a86b95b4"
-      },
-      "0xe91c4764d036cf78f9fe3c3dbe41560534fa5e994823dcf3dedc3fffc24cc63a": {
-        "name": "Morabaraba",
-        "address": "0x9a01cc820e2545dcccf27544db4eff2801f82098"
-      },
-      "0xc61a4b024d9278db927adee2097c217390f1aad8244600819223be1cf4e66161": {
-        "name": "Morabaraba",
-        "address": "0x06d2d24524e19d994eac54004d481969b2d72735"
-      },
-      "0xbdbdcd7e7717779d570bc45e3a520a7f2d9b8d77297954cb7eed117bde9ff91b": {
-        "name": "Morabaraba",
-        "address": "0x0a63257aeed4f6aefd3383a278c57a6eb7c9fa59"
-      },
-      "0xa9c03d1986ccecae932594156e16118ebc8c6699bc7bd8215199757e32aa1f5b": {
-        "name": "Morabaraba",
-        "address": "0xc91377943f977c15007cbc16e5330260e99b6e09"
-      },
-      "0x167a34be55dc1321407c1fd6456d50a24db29446a605ea89057060457fa0ac99": {
-        "name": "Morabaraba",
-        "address": "0xfc6d39e5ca5be655e1157b81eed446e088871952"
-      },
-      "0xcd4119f73968e665f9b0dcced6907f7bfdfea790085ead0e6ce56f9bfef1d822": {
-        "name": "Morabaraba",
-        "address": "0xc0d5b964547967d15e5be084f53bdd222742ac4b"
-      },
-      "0x3fb443b97b7e7fbb5790870b691fba16a5bfcf207746db6e9c2f713144b14586": {
-        "name": "Morabaraba",
-        "address": "0xcf926eb961a08a15d6b1c1ab2c91131402cba120"
-      },
-      "0xf15f1c51d44ff524f858b0e349a70a3836bcae9f97604c97fcc473e7c031169b": {
-        "name": "Morabaraba",
-        "address": "0x4255f156e4e17852e4388ad740cce1a7d33e86b4"
-      },
-      "0xc83028f81d5be5b1004806bece54d3007e93a6673d28ffaa66f84859e16ce1c5": {
-        "name": "Morabaraba",
-        "address": "0xfefd5979b61bee67ceaec220b85aa8d2cb280ef3"
-      },
-      "0x1f6f97020ee8fa60d8739085fb32cf857825d95d56fd531a491197c71365ddb3": {
-        "name": "Morabaraba",
-        "address": "0x7e09c219f76e25e65e7925f869850ea01c450916"
-      },
-      "0xa2fc6a2ee9ed32aec37df11c4476ad4baaaf82c5d628600f01a34cbf93cd2f65": {
-        "name": "Morabaraba",
-        "address": "0x434180c512112b8f65a1a927a3428cb185de7c42"
-      },
-      "0x8987452258117f1b735d0635f27fca73b06e4ede37c95a0662288a8d5ba582a2": {
-        "name": "Morabaraba",
-        "address": "0xfa45a9103797c7ad11571a09b51823dd7f6735d8"
-      },
-      "0x0dc10e597f3e7400491641f70c0d1f133e9d4d2bf2053d04072eb516268d0b4a": {
-        "name": "Morabaraba",
-        "address": "0x130fd57ee856edb4bdfcb4352f52c08e1e34889e"
-      },
-      "0xe45382b17b141b89405ac53108d8dfdc774a906a6fdc7e2674708a9507ae57ac": {
-        "name": "Morabaraba",
-        "address": "0xd99de15a65465aed43a06b63f8fd1935091adb7b"
-      },
-      "0xcf22292b29d4b7b7b4df3890164cd481986405dc2c6b0a1567e78a62347140ce": {
-        "name": "Morabaraba",
-        "address": "0x5994198471ee0c1690792f7815f93136537b8645"
-      },
-      "0x24fa547ec117d825a0ae7bafc943b1ce68e1bbedd8101739e2b28bfc82e412b2": {
-        "name": "Morabaraba",
-        "address": "0x19daf3e2b3525d0a2ba184cdbdccc827072d2267"
-      },
-      "0x7f8ed6351264d4b5bf893e58d58eb4f6a1684b4b461bbe90cd24b87216c7e599": {
-        "name": "Morabaraba",
-        "address": "0xb599e612e1e340a3e1f3465977a4f3bd31a92176"
-      },
-      "0x6dec1b83ad5dce26b5c9b4ed46132b4753a00c91e0905fae59fb6b19b6ac1aed": {
-        "name": "Morabaraba",
-        "address": "0xb9d4754a180e762a033bdb2d2b7e28c9f37dfd74"
-      },
-      "0x76d38256c4bb51ef2aedb6c035f1c66261cc5781fb0a4b3e18da3e99a9a2a22a": {
-        "name": "Morabaraba",
-        "address": "0x8e36a16d5dc6481436b49b060e884479872cdadc"
-      },
-      "0xa16b51d41cc458fc69921ad12d9a966c941931f10159abb03a44c82e3ed2d5eb": {
-        "name": "Morabaraba",
-        "address": "0x62424a35db644e9112092679d0670ea23977a1ce"
-      },
-      "0xc35788093551b8b3933d634a7067e755aaff90d44b09c31e716c85f3f8603b12": {
-        "name": "Morabaraba",
-        "address": "0xc0628dace8d0644cfa08326b060e47a56db61e0a"
-      },
-      "0xcae0cf52581290ad5f6755e0977e4afb7db26e58203635c27911399ccbd4948d": {
-        "name": "Morabaraba",
-        "address": "0x5633ddc82f41c33cdbe694229acef393fddae465"
-      },
-      "0x3eb1f122e96b75a0dd83b1c6172fb6cd86e378f2394e03c8fb54dedd9e472658": {
-        "name": "Morabaraba",
-        "address": "0xd917a6dba11934a920a4ffc46c53524b7a3c122a"
-      },
-      "0x3559998a855b7bfe8e5d7939235cff0aece29d3d3fe01214ad78d90ea52342dc": {
-        "name": "Morabaraba",
-        "address": "0x907a205d3370c066fef9044d38c89626d2c16af4"
-      },
-      "0x71b41f7a76ca260ce9c8cc3add836946331ec9d14d656e3fca24335574f4fb7a": {
-        "name": "Morabaraba",
-        "address": "0x15856eab09b539fad125e972c4b50ea1b5162148"
-      },
-      "0x6bfeda89e4caaa7b6ff19ce9c0fc3f687848053ebcf0b2d7d66e4dc7ce16bb67": {
-        "name": "Morabaraba",
-        "address": "0x1d19ae469817bea5737831370ef4b99041718b44"
-      },
-      "0xb5df9deb0b58a85fda57a1eabd6e0aad5cda574ed3b66b85671f34cc88532760": {
-        "name": "Morabaraba",
-        "address": "0x94efe42c68a678ac0bf1627ec8e26bb13fe8fee3"
-      },
-      "0x558c7d50b3a2fa490b51054ee89c70649eeccf07970304e1d708f7d3dfbc7389": {
-        "name": "Morabaraba",
-        "address": "0x2aeefe05776758ba9270145d9ad7c78164d30880"
+        "address": "0xb9803EecA5Cce9b32da19c1f2072C451DC3618ed"
       }
     },
     "name": "development"
   },
-  "0xcfc16986dbc5ddb520220d13e6d774dbe1eda15d0c60af71ed5dec49c8e742df": {
+  "0x1e6c710718938ff547e4ca8df5586d4120398448d6f9bb8002aeb186ad68ecbb": {
     "contracts": {
-      "0x891720967bbf9f0a6b56a3a76939f6488dc42fcc8c8e5036a0f1703ecd3caae3": {
+      "0x3f5c66e8696181becd00228de2f6464f5fbfcffee6d4eb4c9985b28e46e1467c": {
         "name": "MorabarabaContract",
-        "address": "0x25e1fa58cc1eab41cdc0bd5b1db2c92df6aff309"
+        "address": "0xfaED2D897264A58f3083F60A214ca6362c7a3F10"
       },
-      "0x80f6ab9a4ef1deeda306ce9d97ba5cb2d3815b138ba253541fd6221808a97603": {
+      "0x54cb1913e2788d12c7f7b8a1ac515caa06996aa019847fbfb3bb7b81301680d6": {
         "name": "PlayerContract",
-        "address": "0x44e3b47363dc3e6777a19de9c72213918b243f8f"
+        "address": "0x17d256371d194784A2fAc4d08E476F2F1B25C718"
       }
     },
     "name": "development"
   },
-  "0xadbd5af1272a11bb98ee8c9591ae2d05c76365b40f59f4036f9ed406a9e943c6": {
+  "0x62d044fbcd89b2faa2da8168c05190f926597ad5e8df9c2aee728da8fd76f3cc": {
     "contracts": {
-      "0x891720967bbf9f0a6b56a3a76939f6488dc42fcc8c8e5036a0f1703ecd3caae3": {
+      "0x3f5c66e8696181becd00228de2f6464f5fbfcffee6d4eb4c9985b28e46e1467c": {
         "name": "MorabarabaContract",
-        "address": "0xb50721b74d41ee000c7ae2e0df6896c99d98cc39"
+        "address": "0xAeBf95f478a7c59CAa51CDF84E5360D1C02d0027"
       },
-      "0x80f6ab9a4ef1deeda306ce9d97ba5cb2d3815b138ba253541fd6221808a97603": {
+      "0x54cb1913e2788d12c7f7b8a1ac515caa06996aa019847fbfb3bb7b81301680d6": {
         "name": "PlayerContract",
-        "address": "0x0689d19a340c56acd535b76d20c05ca631f8ac73"
-      }
-    },
-    "name": "development"
-  },
-  "0x9ca7cee50186ead59873a2599e35e50a678d3204edc3e19c4e069d484b0c704d": {
-    "contracts": {
-      "0x8c0dc5823b9f918b3b1b919b940aa02a432c13fde557f73adc558aac42074bc2": {
-        "name": "MorabarabaContract",
-        "address": "0x78fa1cb05c026f484e54bd233816288b9be0f916"
-      },
-      "0x80f6ab9a4ef1deeda306ce9d97ba5cb2d3815b138ba253541fd6221808a97603": {
-        "name": "PlayerContract",
-        "address": "0xff8ed84abe5abdab36b0b136853e3301f7831ce9"
+        "address": "0x194A998D49302C1FC02Cf6dF1af7B720aD3Ae5e2"
       }
     },
     "name": "development"

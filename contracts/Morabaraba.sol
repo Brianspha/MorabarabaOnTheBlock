@@ -224,12 +224,10 @@ function MakeMove(address player,uint256 position) public returns (string messag
         if(currentTurn)
         {
          currentGameSession.P1.PlayerMills[currentGameSession.P1.MillCount++]=Mill(currentGameSession.CurrentBoard.InternalBoard[a],currentGameSession.CurrentBoard.InternalBoard[b],currentGameSession.CurrentBoard.InternalBoard[c]);
-         message="Player 1 formed a Mill";
         }
         else
         {
          currentGameSession.P2.PlayerMills[currentGameSession.P2.MillCount++]=Mill(currentGameSession.CurrentBoard.InternalBoard[a],currentGameSession.CurrentBoard.InternalBoard[b],currentGameSession.CurrentBoard.InternalBoard[c]);
-        message="Player 2 Formed a Mill";
         }
       }
     }

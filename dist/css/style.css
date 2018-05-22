@@ -32,7 +32,7 @@
 }
 
 body {
-    background: url("../Nine-Mens-Morris/background.jpg") no-repeat center center fixed;
+    background: whitesmoke;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -45,6 +45,6 @@ body {
 canvas {
     z-index: -1;
     margin: auto;
-    background: url("main.png");
+    background: url("../img/main.png");
     border: 1px solid #d3d3d3;
 }

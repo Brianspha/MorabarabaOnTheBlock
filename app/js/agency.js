@@ -40,10 +40,10 @@
   $(window).scroll(navbarCollapse);
 
   // Hide navbar when modals trigger
-  $('.About-modal').on('show.bs.modal', function(e) {
+  $('.portfolio-modal').on('show.bs.modal', function(e) {
     $(".navbar").addClass("d-none");
   })
-  $('.About-modal').on('hidden.bs.modal', function(e) {
+  $('.portfolio-modal').on('hidden.bs.modal', function(e) {
     $(".navbar").removeClass("d-none");
   })
 

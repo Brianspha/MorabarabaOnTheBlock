@@ -35,10 +35,10 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/agency.min.js"></script>
+
+  <!--Style sheet for the Morabaraba Board --> 
+   <link href="css/style.css">
   
-    <!--Script for Morabaraba -->
- <script src="js/app.js"></script>
- 
   </head>
 
   <body id="page-top">
@@ -54,13 +54,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#Register">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#Login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#Play">Play</a>
+              <a class="nav-link js-scroll-trigger" href="#PlaySection">Play</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#About">About</a>
@@ -76,98 +70,71 @@
         <div class="intro-text">
           <div class="intro-lead-in">Welcome To Morabaraba on the Blockchain!</div>
           <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#Register">Play</a>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="PlayBut">Play</a>
         </div>
       </div>
     </header>
 
-    <!-- Register -->
-    <section id="Register">
-      <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading text-uppercase">Register</h2>
-              </div>
-        <div class="clearfix"></div>
-          <div class="col-lg-12 text-center">
-            <form id="contactForm" name="sentMessage" novalidate="novalidate">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <input class="form-control" id="address" type="text" placeholder="Your Address e.g. 0x0a... *" required="required" data-validation-required-message="Please enter your address to be used for indentification.">
-                    <p class="help-block text-danger"></p>
-                  </div>
-                 <!-- <div class="form-group">
-                    <input class="form-control" id="pass" type="password" placeholder="Please enter your disired password minimum length is 8*" required="required" data-validation-required-message="Please enter a desired password to be used for future use of the website.">
-                    <p class="help-block text-danger"></p>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" id="pass1" type="password" placeholder="Retype password *" required="required" data-validation-required-message="Please enter a password for future use.">
-                    <p class="help-block text-danger"></p>
-                  </div>
-                </div> -->
-                <div class="clearfix"></div>
-                <div class="col-lg-12 text-center">
-                  <div id="success"></div>
-                  <button id="Register" class="btn btn-primary btn-xl text-uppercase" type="submit">Register</button>
-                </div>
-              </div>
-            </form>
+
+ 
+<!-- Play -->
+<section id="PlaySection">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Play</h2>
+            <div class="About-modal modal fade" id="AboutModal4" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                      <div class="lr">
+                        <div class="rl"></div>
+                      </div>
+                    </div>
+            <div class="mid">
+              <canvas height="550" width="550" id="myCanvas">
+                  Your browser does not support the HTML5 canvas tag.
+              </canvas>
+           </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</div>
+</section>
 
-<!--Login -->
-<section id="Login">
-    <div class="container">
-      <div class="row">
-          <div class="col-lg-12 text-center">
-              <h2 class="section-heading text-uppercase">Login</h2>
-            </div>
-      <div class="clearfix"></div>
-        <div class="col-lg-12 text-center">
-          <form id="contactForm" name="sentMessage" novalidate="novalidate">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input class="form-control" id="address" type="text" placeholder="Your Address e.g. 0x0a... *" required="required" data-validation-required-message="Please enter your address to be used for indentification.">
-                  <p class="help-block text-danger"></p>
-                </div>
-              <!--  <div class="form-group">
-                  <input class="form-control" id="pass" type="password" placeholder="Enter password" required="required" data-validation-required-message="Password not entered.">
-                  <p class="help-block text-danger"></p>
-                </div> -->
-              </div>
-              <div class="clearfix"></div>
-              <div class="col-lg-12 text-center">
-                <div id="success"></div>
-                <button id="Register" class="btn btn-primary btn-xl text-uppercase" type="submit">Login</button>
-              </div>
-            </div>
-          </form>
-        </div>
+<!-- About Grid -->
+<section class="bg-light" id="About">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">About</h2>
       </div>
     </div>
-  </section>
-
- <!-- About Grid -->
- <section class="bg-light" id="About">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">About</h2>
+    <div class="row">
+      <div class="col-md-4 col-sm-6 About-item">
+        <a class="About-link" data-toggle="modal" href="#AboutModal1">
+          <div class="About-hover">
+            <div class="About-hover-content">
+              <i class="fa fa-plus fa-3x"></i>
+            </div>
+          </div>
+          <img class="img-fluid" src="img/about/about3.jpg" alt="">
+        </a>
+        <div class="About-caption">
+          <h4>History</h4>
+          <p class="text-muted">Read more</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-4 col-sm-6 About-item">
-          <a class="About-link" data-toggle="modal" href="#AboutModal1">
+      <div class="col-md-4 col-sm-6 About-item">
+          <a class="About-link" data-toggle="modal" href="#AboutModal2">
             <div class="About-hover">
               <div class="About-hover-content">
                 <i class="fa fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="img/portfolio/about3.jpg" alt="">
+            <img class="img-fluid" src="img/about/about2.jpg" alt="">
           </a>
           <div class="About-caption">
             <h4>History</h4>
@@ -175,70 +142,29 @@
           </div>
         </div>
         <div class="col-md-4 col-sm-6 About-item">
-            <a class="About-link" data-toggle="modal" href="#AboutModal2">
+            <a class="About-link" data-toggle="modal" href="#AboutModal3">
               <div class="About-hover">
                 <div class="About-hover-content">
                   <i class="fa fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="img/portfolio/about2.jpg" alt="">
+              <img class="img-fluid" src="img/about/about1.jpg" alt="">
             </a>
             <div class="About-caption">
-              <h4>History</h4>
-              <p class="text-muted">Read more</p>
+              <h4>How to Play!</h4>
+              <p>Read More</p>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 About-item">
-              <a class="About-link" data-toggle="modal" href="#AboutModal3">
-                <div class="About-hover">
-                  <div class="About-hover-content">
-                    <i class="fa fa-plus fa-3x"></i>
-                  </div>
-                </div>
-                <img class="img-fluid" src="img/portfolio/about1.jpg" alt="">
-              </a>
-              <div class="About-caption">
-                <h4>How to Play!</h4>
-                <p>Read More</p>
-              </div>
-            </div>
-      </div>
-    </div>
-    </section>
-
-<!-- Play -->
-<section id="Play">
-    <div class="container">
-      <div class="row">
-          <div class="col-lg-12 text-center">
-              <h2 class="section-heading text-uppercase">Play</h2>
-              <div class="About-modal modal fade" id="AboutModal4" tabindex="-1" role="dialog" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="close-modal" data-dismiss="modal">
-                        <div class="lr">
-                          <div class="rl"></div>
-                        </div>
-                      </div>
-              <div class="mid">
-                <canvas height="550" width="550" id="myCanvas">
-                    Your browser does not support the HTML5 canvas tag.
-                </canvas>
-             </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
-</section>
+  </section>
 
     <!-- Footer -->
     <footer>
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <span class="copyright">Copyright &copy; Morabaraba 2018</span>
+            <span class="copyright">Copyright &copy; Morabaraba.io 2018</span>
           </div>
           <div class="col-md-4">
             <ul class="list-inline social-buttons">
@@ -289,7 +215,7 @@
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
                   <h2 class="text-uppercase">Morabaraba</h2>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/about3.jpg" alt="">
+                  <img class="img-fluid d-block mx-auto" src="img/about/about3.jpg" alt="">
                   <p>Morabaraba is an ancient and traditional African board game that has been played for thousands of years. Its origins predate recorded history in Africa. Today, Morabaraba is played in several countries — there is even a World Championship and South African players have been awarded national colours. It has been claimed that approximately 40% of South Africans know how to play Morabaraba — which would be about 20-m people!
 
                     Morabaraba is an accessible game that is easy to learn, although its strategic and tactical aspects run deep. While it may be played on specially-produced boards (or computer software) with special counters, it is simple enough that a board can easily be scratched on a stone or into sand, with coins or pebbles, or whatever comes to hand, used as the pieces.
@@ -355,28 +281,28 @@
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
                   <h2 class="text-uppercase">Rules</h2>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/about2.jpg" alt="">
+                  <img class="img-fluid d-block mx-auto" src="img/about/about2.jpg" alt="">
                   <p><b>General:</b><br>
  
-                      1.	The rules for the version, as depicted in the above image, are known as the Generally Accepted Rules (GAR).
-                      2.	For competition play, the board may be made of any material as long as the board has the approved notation.
+                      1.	The rules for the version, as depicted in the above image, are known as the Generally Accepted Rules (GAR).<br>
+                      2.	For competition play, the board may be made of any material as long as the board has the approved notation.<br>
                       3.	Board sizes are:
                       •	For Provincial and National Championships – 490mm x 490mm (Cows being 45mm in diameter and 5mm in depth), and
-                      •	All other competitions – 300mm x 300mm (Cows being 30mm in diameter and 10mm in depth).
-                      4.	All cows shall have the MSSA logo on the cow.
-                      5.	There are 24 junctions on the board.
-                      6.	Each player is issued with a set of 12 cows. One set being of a dark colour, and one set being of a light colour.
-                      7.	The colour white may not be used for cows as the colour may confuse players as to whether a cow has been placed.
-                      8.	Only players who have won the MSSA's national championships, or who have received Protea Colours for the game of Morabaraba, may use cows which are green in colour. Such cows are awarded by the MSSA in numbered sets. Such players have the right to use such cows instead of any such cows as supplied by any Tournament organiser in any event falling under the jurisdiction of the MSSA.
-                      9.	The outside ring is known as the “Exterior Ring” and the junctions are numbered clockwise from from the top left hand corner E1 to E8.
-                      10.	The middle ring is known as the “Principle Ring” and the junctions are numbered clockwise from from the top left hand corner A1 to A8.
-                      11.	The inner ring is known as the “Restricted Ring” and the junctions are numbered clockwise from from the top left hand corner R1 to R8.
-                      12.	The notation was developed for the MSSA by Dr. Evgenii Rabiner.
+                      •	All other competitions – 300mm x 300mm (Cows being 30mm in diameter and 10mm in depth).<br>
+                      4.	All cows shall have the MSSA logo on the cow.<br>
+                      5.	There are 24 junctions on the board.<br>
+                      6.	Each player is issued with a set of 12 cows. One set being of a dark colour, and one set being of a light colour.<br>
+                      7.	The colour white may not be used for cows as the colour may confuse players as to whether a cow has been placed.<br>
+                      8.	Only players who have won the MSSA's national championships, or who have received Protea Colours for the game of Morabaraba, may use cows which are green in colour. Such cows are awarded by the MSSA in numbered sets. Such players have the right to use such cows instead of any such cows as supplied by any Tournament organiser in any event falling under the jurisdiction of the MSSA.<br>
+                      9.	The outside ring is known as the “Exterior Ring” and the junctions are numbered clockwise from from the top left hand corner E1 to E8.<br>
+                      10.	The middle ring is known as the “Principle Ring” and the junctions are numbered clockwise from from the top left hand corner A1 to A8.<br>
+                      11.	The inner ring is known as the “Restricted Ring” and the junctions are numbered clockwise from from the top left hand corner R1 to R8.<br>
+                      12.	The notation was developed for the MSSA by Dr. Evgenii Rabiner.<br>
                       13.	Notation shall be scored as follows:
                       •	When placing cows – just write the junction's address, that is “A1”, or “E5”, etc.
                       •	When moving cows – write down the initial junction's address with a hyphen and then the final function's address, for example: “A1 – A8”
                       •	When moving a cow to form a line and 'shooting' one of your opponent's cows, write down the initial junction's address with a hyphen an then the final function's address a multiplication sign and the address of the cow that has just been 'shot', for example: “A1 – A8 x E1”
-                      •	Notation of a typical game may appear as follows:
+                      •	Notation of a typical game may appear as follows:<br>
                       
                       
                       </p>
@@ -395,7 +321,7 @@
     </div>
 
     
-    <!-- Modal 2 -->
+    <!-- Modal 3 -->
     <div class="About-modal modal fade" id="AboutModal3" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -410,7 +336,7 @@
                   <div class="modal-body">
                     <!-- Project Details Go Here -->
                     <h2 class="text-uppercase">How to Play</h2>
-                    <img class="img-fluid d-block mx-auto" src="img/portfolio/about1.jpg" alt="">
+                    <img class="img-fluid d-block mx-auto" src="img/about/about1.jpg" alt="">
                     <p><b>How to play:</b><br>
 
                         <i>Play consists of three stages:</i>
@@ -427,7 +353,7 @@
                         
                         •	Only one of the opponent's cows may be shot at a time, even if two (or more) lines of three-in-a-row are achieved with one move. 
                         
-                        •	Once a cow is shot, it shall not be used in play again.
+                        •	Once a cow is shot, it shall not be used in play again.<br>
                          
                         Stage 2 
                         
@@ -444,7 +370,7 @@
                         Should a player have a ‘cow’ on the junction marked E6, such player may move it to the junction marked as A6 to immediately create a new line. However, in such player’s next move, he/she may not move the cow back to A6, instead, such player must do another move before moving the cow back to E6 to immediately create a new line. 
                          
                         
-                        •	Each time a three-in-a-row is remade, an opponent's cow shall be shot. 
+                        •	Each time a three-in-a-row is remade, an opponent's cow shall be shot. <br>
                         
                         
                          Stage 3
@@ -456,7 +382,7 @@
                         •	The game is won when the opponent cannot move any cows: or when the opponent has lost all but two cows. 
                         
                         •	When a player is down to three cows, and neither player is able to shoot an opponent's cow within ten moves, the game is a draw.
-                        
+                        <br>
                         
                         </p>
                     <ul class="list-inline">
@@ -472,7 +398,69 @@
           </div>
         </div>
       </div>
+      <!-- Modal 4 -->
+      <div class="About-modal modal fade" id="AboutModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+              <div class="lr">
+                <div class="rl"></div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 mx-auto">
+                  <div class="modal-body">
+                    <!-- Project Details Go Here -->
+                    <h2 class="text-uppercase">Enter Each Players address</h2>
+                    <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input class="form-control" id="address" type="text" placeholder="Player 1's Address e.g. 0x0a... *" required="required" data-validation-required-message="Please enter your address to be used for indentification.">
+                            <p class="help-block text-danger"></p>
+                          </div>
+                          <div class="form-group">
+                            <input class="form-control" id="address1" type="text" placeholder="Player 2's Address e.g. 0x0a... *" required="required" data-validation-required-message="Password not entered.">
+                            <p class="help-block text-danger"></p>
+                          </div> 
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12 text-center">
+                          <div id="success"></div>
+                        </div>
+                      </div>
+                    </form>                   
+                    <button class="btn btn-primary" data-dismiss="modal"  id="GOver" type="button">
+                      <i class="fa fa-times"></i>
+                      Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Validation form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+
+    <!-- Main Script-->
+    <script src="js/index.js"></script>
+    
+    <!-- Morabaraba Board Script-->
+   <script src="js/script.js"></script>
 
   </body>
 
