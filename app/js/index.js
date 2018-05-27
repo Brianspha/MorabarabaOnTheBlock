@@ -1,6 +1,4 @@
-(function ($) {
-    'use strict';
-    jQuery(document).ready(function () {
+$(document).ready(function () {
 var playerOneCode = 1;
 var playerTwoCode = 2;
 var redBlocks = 0;
@@ -30,32 +28,69 @@ var playerContract;
  //firstAccount = e[0];
  //console.log("A: " + firstAccount);
 //}) 
-    var account1 = document.getElementById("address").value;
+   // var account1 = document.getElementById("address").value;
+    
+$("#SubmitBut").click(function(){
+    var account1=document.getElementById("address1").value;
+    var account2 =document.getElementById("address2").value;
+    var validated = Check(account1,account2);
+
+    if(validated)
+    {
     playerContract= new PlayerContract(account1);
     if (EmbarkJS.isNewWeb3()) 
     {
       
         
-      }
-$('#PlayBut').on('click', function(e) {
-    document.getElementById("AboutModal4").style.display="block";
-    var account1=document.getElementById("address1").value;
-    var account2 =document.getElementById("address2").value;
-    Morabaraba.methods.NewGame(account1,account2).call({from: account1,gas:3000000},function(err, value) {
+    MorabarabaContract.methods.NewGame(account1,account2).call({from: account1,gas:3000000},function(err, value) {
         alert(value);
         if(!err){
         var section = $(this).attr("PlaySection");
         $("html, body").animate({
             scrollTop: $(section).offset().top
         });
-        document.getElementById("AboutModal4").style.display="none";
         initializeGame();
     }
+    
        // Setup the game board etc..   
       });
+    }
+}
+else
+{
+
+}
       
     return false;
 });
+
+//validates if the provided input is null or not
+function Check(account1,account2)
+{
+ var valid =true;
+ if((account1 =="" && account2.length >0)||account1.length==0){
+     alert("Player 1's address required");
+     valid= false;
+ }
+ if((account1>0 && account2=="")||account2.length==0)
+ {
+     alert("Player 2's account required");
+     valid=false;
+ }
+ return valid;
+}
+//For when the user doesnt enter all addresses required for playing the game
+function ReShowModal(show)
+{
+ if(show)
+ { 
+  $("#myModal").modal("show");
+ }
+ else
+ {
+    $("#myModal").modal("hide");
+ }
+}
 function initializeGame() {
     //clickSound = new sound("");
     initializeArray();
@@ -433,7 +468,7 @@ function update() {
 
    }
  })
-})
-$( window ).load(function() {
-document.getElementById("AboutModal4").style.display="none";
-  });
+
+$(window).on('load', function(){
+//For future use
+});

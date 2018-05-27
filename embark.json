@@ -1,20 +1,20 @@
 {
-  "contracts": ["contracts/**"],
+   "contracts": ["app/contracts/**"],
   "app": {
-  	"css/":["app/css/**"],
     "css/app.css": ["app/css/**"],
-    "js":["app/js/**"],
-    "js/app.js": ["app/js/index.js"],
-    "img/": ["app/img/**"],
-    "scss/": ["app/scss/**"],
-    "index.html": "app/index.html"
-  },
+    "js/app.js": ["app/js/**"],
+    "index.html": "app/index.html",
+    "img": ["app/img/**"],
+    "scss":["app/scss/**"],
+     "js":["app/js/**"]
+      },
   "buildDir": "dist/",
   "config": "config/",
   "versions": {
     "web3": "1.0.0-beta",
-    "solc": "0.4.23",
+    "solc": "0.4.24",
     "ipfs-api": "17.2.4"
   },
-  "plugins": {}
+  "plugins": {
+  }
 }

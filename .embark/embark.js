@@ -564,7 +564,7 @@ var whenEnvIsLoaded = function(cb) {
 }
 whenEnvIsLoaded(function() {
   
-EmbarkJS.Messages.setProvider('whisper',{"server":"localhost","port":8546,"type":"ws"});
+EmbarkJS.Messages.setProvider('whisper',{"server":"localhost","port":8545,"type":"ws"});
 });
 
 var whenEnvIsLoaded = function(cb) {

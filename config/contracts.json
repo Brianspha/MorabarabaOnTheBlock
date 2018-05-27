@@ -1,16 +1,29 @@
 {
   "default": {
+    "versions": {
+      "web3.js": "1.0.0-beta",
+      "solc": "0.4.23"
+    },
     "deployment": {
       "host": "localhost",
       "port": 8545,
       "type": "rpc"
     },
     "dappConnection": [
-      "$WEB3",
+      "$WEB3",  
       "http://localhost:8545"
     ],
-    "gas": "auto",
+    "gas": "6000000",
     "contracts": {
+      "MorabarabaContract": {
+        "fromIndex": 0,
+        "args": [
+       ]
+      },
+      "PlayerContract": {
+      "args": [
+       ]
+      }
     }
   }
 }

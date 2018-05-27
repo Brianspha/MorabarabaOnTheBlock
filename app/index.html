@@ -33,12 +33,15 @@
     <!-- Contact form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
 
-    <!-- Custom scripts for this template -->
+    <!-- Custom scripts for this template 
     <script src="js/agency.min.js"></script>
-
+-->
   <!--Style sheet for the Morabaraba Board --> 
    <link href="css/style.css">
-  
+
+  <!--App css -->
+  <link href="css/app.css">  
+
   </head>
 
   <body id="page-top">
@@ -54,7 +57,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#PlaySection">Play</a>
+              <a class="nav-link js-scroll-trigger" href="#PlaySection" >Play</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#About">About</a>
@@ -70,7 +73,7 @@
         <div class="intro-text">
           <div class="intro-lead-in">Welcome To Morabaraba on the Blockchain!</div>
           <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="PlayBut">Play</a>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="PlayBut" data-toggle="modal" data-target="#myModal">Play</a>
         </div>
       </div>
     </header>
@@ -399,50 +402,42 @@
         </div>
       </div>
       <!-- Modal 4 -->
-      <div class="About-modal modal fade" id="AboutModal4" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-              <div class="lr">
-                <div class="rl"></div>
-              </div>
-            </div>
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8 mx-auto">
-                  <div class="modal-body">
-                    <!-- Project Details Go Here -->
-                    <h2 class="text-uppercase">Enter Each Players address</h2>
-                    <form id="contactForm" name="sentMessage" novalidate="novalidate">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input class="form-control" id="address" type="text" placeholder="Player 1's Address e.g. 0x0a... *" required="required" data-validation-required-message="Please enter your address to be used for indentification.">
-                            <p class="help-block text-danger"></p>
-                          </div>
-                          <div class="form-group">
-                            <input class="form-control" id="address1" type="text" placeholder="Player 2's Address e.g. 0x0a... *" required="required" data-validation-required-message="Password not entered.">
-                            <p class="help-block text-danger"></p>
-                          </div> 
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="col-lg-12 text-center">
-                          <div id="success"></div>
-                        </div>
-                      </div>
-                    </form>                   
-                    <button class="btn btn-primary" data-dismiss="modal"  id="GOver" type="button">
-                      <i class="fa fa-times"></i>
-                      Submit</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Registration</h4>
         </div>
+        <div class="modal-body">
+          <form id="contactForm" name="sentMessage" novalidate="novalidate">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input class="form-control" id="address1" type="text" placeholder="Player 1's Address e.g. 0x0a... *" required="required" data-validation-required-message="Please enter your address to be used for indentification.">
+                  <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" id="address2" type="text" placeholder="Player 2's Address e.g. 0x0a... *" required="required" data-validation-required-message="Password not entered.">
+                  <p class="help-block text-danger"></p>
+                </div> 
+                <div class="modal-footer">
+                <div class="form-group">
+                  <input class="form-control" type="submit" id="SubmitBut">
+                  <p class="help-block text-danger"></p>
+                </div> 
+              </div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="col-lg-12 text-center">
+                <div id="success"></div>
+              </div>
+            </div>
+          </form> 
+        </div>
+       
       </div>
-  
-
+    </div>
+  </div>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -453,15 +448,16 @@
     <!-- Validation form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
 
-    <!-- Custom scripts for this template -->
+    <!-- Custom scripts for this template 
     <script src="js/agency.min.js"></script>
-
+-->
     <!-- Main Script-->
-    <script src="js/index.js"></script>
-    
-    <!-- Morabaraba Board Script-->
-   <script src="js/script.js"></script>
+    <script src="js/app.js"></script>
 
+    <!-- Morabaraba Board Script 
+    <script src="js/index.js"></script>
+   <script src="js/script.js"></script>
+-->
   </body>
 
 </html>
