@@ -750,8 +750,8 @@ body {
 }
 
 canvas {
-    z-index: -1;
     margin: auto;
     background: url("../img/main.png");
     border: 1px solid #d3d3d3;
+    display: none;
 }

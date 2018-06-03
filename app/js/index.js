@@ -1,3 +1,7 @@
+import PlayerContract from 'Embark/contracts/PlayerContract';
+import MorabarabaContract from 'Embark/contracts/MorabarabaContract';
+
+
 $(document).ready(function () {
 var playerOneCode = 1;
 var playerTwoCode = 2;
@@ -24,42 +28,41 @@ var referenceMatrix = new Array(7);
 var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
 var playerContract;
-//web3.eth.getAccounts().then(e => { 
- //firstAccount = e[0];
+var imageObj = new Image();
+imageObj.onload = function() {
+  context.drawImage(imageObj, 0, 0);
+};
+imageObj.src = 'https://scontent-jnb1-1.xx.fbcdn.net/v/t1.15752-9/34284674_1895296563848396_829723798243639296_n.png?_nc_cat=0&oh=51cfc1d3b853abc3cc48e6a152f379b0&oe=5BBFFB4B';
+//firstAccount = e[0];
  //console.log("A: " + firstAccount);
 //}) 
    // var account1 = document.getElementById("address").value;
-    
-$("#SubmitBut").click(function(){
-    var account1=document.getElementById("address1").value;
-    var account2 =document.getElementById("address2").value;
+var account1;
+var account2;
+$("#SubmitBut").click(function(event){
+     account1=document.getElementById("address1").value;
+     account2 =document.getElementById("address2").value;
     var validated = Check(account1,account2);
-
     if(validated)
     {
-    playerContract= new PlayerContract(account1);
-    if (EmbarkJS.isNewWeb3()) 
-    {
-      
-        
+    //playerContract=  PlayerContract(account1); will add this later
     MorabarabaContract.methods.NewGame(account1,account2).call({from: account1,gas:3000000},function(err, value) {
-        alert(value);
-        if(!err){
-        var section = $(this).attr("PlaySection");
-        $("html, body").animate({
-            scrollTop: $(section).offset().top
-        });
-        initializeGame();
+        if(value){
+        alert(value)
+        $('#myModal').modal('hide');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        $('#myModalPlay').modal('toggle');
+        var mother =document.getElementById("canvasmother");
+        mother.appendChild(canvas);
+    }
+    else{ 
+        alert("An error occured!");
     }
     
        // Setup the game board etc..   
       });
     }
-}
-else
-{
-
-}
       
     return false;
 });
@@ -80,16 +83,9 @@ function Check(account1,account2)
  return valid;
 }
 //For when the user doesnt enter all addresses required for playing the game
-function ReShowModal(show)
-{
- if(show)
- { 
-  $("#myModal").modal("show");
- }
- else
- {
-    $("#myModal").modal("hide");
- }
+function ReShowModal()
+{ 
+  $("#myModal").modal("hide");
 }
 function initializeGame() {
     //clickSound = new sound("");
@@ -301,7 +297,6 @@ function makeMove(X, Y) {
         if (!Turn) {
             //Player two made a move, hence made a block red.
             redBlocks++;
-            positionMatrix[X][Y] = 2;
             context.beginPath();
             context.arc(xCenter, yCenter, blockWidth, 0, 2 * Math.PI, false);
             context.fillStyle = '#F44336';
@@ -310,6 +305,14 @@ function makeMove(X, Y) {
             context.strokeStyle = '#003300';
             context.stroke();
             document.getElementById("turn").innerHTML = "P1";
+            Turn =!Turn;
+            MorabarabaContract.methods.MakeMove(account1,).call({from: account1,gas:3000000},function(err, value) {
+                if(value=="Player 2's Turn"){
+                }
+                else{
+                    alert(value);
+                }
+            });
             
         }
         else {
@@ -321,6 +324,7 @@ function makeMove(X, Y) {
             context.lineWidth = strokeWidth;
             context.strokeStyle = '#003300';
             context.stroke();
+            Turn=!Turn;
             //alert("turn").innerHTML = "P2";
 
         }
