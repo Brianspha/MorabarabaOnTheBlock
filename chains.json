@@ -37,5 +37,18 @@
       }
     },
     "name": "development"
+  },
+  "0x37fe3f2a3fcf9c5bd2c8c7246e5d279eef67c761289b471c179d20c39e28cdc9": {
+    "contracts": {
+      "0xeb5e0710d56cd03c491aac4a519ead7a07bf524e2317a3a38082e162ab77ad67": {
+        "name": "MorabarabaContract",
+        "address": "0x4596120e11815E58F2b1f29255186a7074603c2C"
+      },
+      "0xbfb87e60eca5d6db32b4a6b2678171c2b02e8bb9a7c975a2d6f5ec95c1a00495": {
+        "name": "PlayerContract",
+        "address": "0x6907A5A1149f61fD3412f1A41b27495011F41caD"
+      }
+    },
+    "name": "development"
   }
 }

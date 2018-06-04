@@ -17,7 +17,7 @@ var lastX = 0;
 var lastY = 0;
 var lastCenterX = 0;
 var lastCenterY = 0;
-var numberOfTurns = 0;
+var Turn = true;
 var rows = 7;
 var columns = 7;
 var clickSound;
@@ -26,24 +26,36 @@ var referenceMatrix = new Array(7);
 var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
 var playerContract;
-
-function Register()
-{
+//web3.eth.getAccounts().then(e => { 
+ //firstAccount = e[0];
+ //console.log("A: " + firstAccount);
+//}) 
     var account1 = document.getElementById("address").value;
     playerContract= new PlayerContract(account1);
     if (EmbarkJS.isNewWeb3()) 
     {
-      Morabaraba.methods.NewGame(account1,web3.eth.defaultAccount).call({from: web3.eth.defaultAccount,gas:3000000},function(err, value) {
-        alert(value);
-        $('#Play').on('click', function() {  
-            $('html, body').animate({scrollTop: $(this.hash).offset().top - 50}, 1000);
-            return false;
-        });
-       // Setup the game board etc..   
-      });
+      
         
       }
-}
+$('#PlayBut').on('click', function(e) {
+    document.getElementById("AboutModal4").style.display="block";
+    var account1=document.getElementById("address1").value;
+    var account2 =document.getElementById("address2").value;
+    Morabaraba.methods.NewGame(account1,account2).call({from: account1,gas:3000000},function(err, value) {
+        alert(value);
+        if(!err){
+        var section = $(this).attr("PlaySection");
+        $("html, body").animate({
+            scrollTop: $(section).offset().top
+        });
+        document.getElementById("AboutModal4").style.display="none";
+        initializeGame();
+    }
+       // Setup the game board etc..   
+      });
+      
+    return false;
+});
 function initializeGame() {
     //clickSound = new sound("");
     initializeArray();
@@ -249,89 +261,9 @@ function makeMove(X, Y) {
         }
     }
 
-    if (isMillGreen || isMillRed) {
-        //In this case don't change player turn and remove other player block in next click
-        var playerCode = (isMillGreen) ? 1 : 2;
-        if (positionMatrix[X][Y] != playerCode && (positionMatrix[X][Y] != 0)) {
-            //Check that it shouldn't be the part of other mill
-            if (!checkMill(X, Y, ((isMillRed) ? 1 : 2)) || allArePartOfMill(((isMillRed) ? 1 : 2))) {
-                //Remove that block and update array value to zero
-                ////////clickSound.play();
-                if (playerCode == 1) {
-                    redBlocks--;
-                    document.getElementById("message").innerHTML = "Red block removed";
-                } else {
-                    document.getElementById("message").innerHTML = "Green block removed";
-                    greenBlocks--;
-                }
-                context.clearRect(xCenter - blockWidth - strokeWidth, yCenter - blockWidth - strokeWidth,
-                    2 * (blockWidth + strokeWidth), 2 * ( blockWidth + strokeWidth));
-                positionMatrix[X][Y] = 0;
-                turnOffMill();
-                update();
-            }
-            else {
-                document.getElementById("message").innerHTML = "Can't remove a block which is already a part of mill";
-            }
-        }
-    }
-
-    else if (numberOfTurns >= 18 && (isActiveRed || isActiveGreen)) {
-
-        if ((((X == lastX) && (Y == lastY)) || (positionMatrix[X][Y] == 1 || positionMatrix[X][Y] == 2))) {
-            turnOffActive(lastCenterX, lastCenterY);
-        }
-
-        if ((positionMatrix[X][Y] == 0)) {
-            //Checking for adjacent element.
-            if (((X == lastX) || (Y == lastY))) {
-                if (X == 0 || X == 6 || Y == 0 || Y == 6) {
-                    if (((Math.abs(X - lastX) + Math.abs(Y - lastY)) == 3 ) || ((Math.abs(X - lastX) + Math.abs(Y - lastY)) == 1 )) {
-                        //Remove previous block and make a new block at the the given position
-                        positionMatrix[lastX][lastY] = 0;
-                        clearBlock(lastCenterX, lastCenterY);
-                        drawBlock(xCenter, yCenter, X, Y);
-                    }
-                } else if (X == 1 || X == 5 || Y == 1 || Y == 5) {
-                    if (((Math.abs(X - lastX) + Math.abs(Y - lastY)) == 2 ) || ((Math.abs(X - lastX) + Math.abs(Y - lastY)) == 1 )) {
-                        //Remove previous block and make a new block at the the given position
-                        positionMatrix[lastX][lastY] = 0;
-                        clearBlock(lastCenterX, lastCenterY);
-                        drawBlock(xCenter, yCenter, X, Y);
-                    }
-                } else if (X == 2 || X == 4 || Y == 2 || Y == 4) {
-                    if (((Math.abs(X - lastX) + Math.abs(Y - lastY)) == 1 )) {
-                        //Remove previous block and make a new block at the the given position
-                        positionMatrix[lastX][lastY] = 0;
-                        clearBlock(lastCenterX, lastCenterY);
-                        drawBlock(xCenter, yCenter, X, Y);
-                    }
-                }
-
-            } else {
-                if (isGreenThreeLeft && (positionMatrix[lastX][lastY] == playerOneCode)) {
-                    positionMatrix[lastX][lastY] = 0;
-                    clearBlock(lastCenterX, lastCenterY);
-                    drawBlock(xCenter, yCenter, X, Y);
-                }
-                else if (isRedThreeLeft && (positionMatrix[lastX][lastY] == playerTwoCode)) {
-                    positionMatrix[lastX][lastY] = 0;
-                    clearBlock(lastCenterX, lastCenterY);
-                    drawBlock(xCenter, yCenter, X, Y);
-                }
-                else {
-                    turnOffActive(lastCenterX, lastCenterY);
-                }
-
-            }
-
-        }
-    }
-
-    else if (positionMatrix[X][Y] == 0 && numberOfTurns < 18) {
 
         //////clickSound.play();
-        if (numberOfTurns % 2 != 0) {
+        if (!Turn) {
             //Player two made a move, hence made a block red.
             redBlocks++;
             positionMatrix[X][Y] = 2;
@@ -343,19 +275,10 @@ function makeMove(X, Y) {
             context.strokeStyle = '#003300';
             context.stroke();
             document.getElementById("turn").innerHTML = "P1";
-            if (checkMill(X, Y, 2)) {
-                isMillRed = true;
-                document.getElementById("turn").innerHTML = "P2";
-                document.getElementById("message").innerHTML = "A Mill is formed. Click on green block to remove it.";
-            } else {
-                document.getElementById("message").innerHTML = "Click on empty spot to place your piece";
-            }
-
+            
         }
         else {
             //Player one just made a move, hence made a block green
-            greenBlocks++;
-            positionMatrix[X][Y] = 1;
             context.beginPath();
             context.arc(xCenter, yCenter, blockWidth, 0, 2 * Math.PI, false);
             context.fillStyle = '#2E7D32';
@@ -363,76 +286,11 @@ function makeMove(X, Y) {
             context.lineWidth = strokeWidth;
             context.strokeStyle = '#003300';
             context.stroke();
-            document.getElementById("turn").innerHTML = "P2";
-            if (checkMill(X, Y, 1)) {
-                isMillGreen = true;
-                document.getElementById("turn").innerHTML = "P1";
-                document.getElementById("message").innerHTML = "A Mill is formed. Click on red block to remove it.";
-            } else {
-                document.getElementById("message").innerHTML = "Click on empty spot to place your piece";
-            }
+            //alert("turn").innerHTML = "P2";
 
-
-        }
-        if (numberOfTurns == 17) {
-            document.getElementById("message").innerHTML = "Now, Move one step by clicking on Block";
-        }
-        numberOfTurns++;
-
-    }
-
-    else if (numberOfTurns >= 18 && positionMatrix[X][Y] != 0) {
-        //Do nothing when clicked on empty element and check the all possible moves that
-        // a player have after clicking on a  particular position of his own color.
-        if (numberOfTurns % 2 != 0 && positionMatrix[X][Y] == 2) {
-            //Player two made a move, hence made a block fade red.
-            ////////clickSound.play();
-            isActiveRed = true;
-            if (checkThreeLeft(playerTwoCode)) {
-                isRedThreeLeft = true;
-                document.getElementById("message").innerHTML = "Red can now move anywhere (3 are left only)";
-            } else {
-                document.getElementById("message").innerHTML = "Move one step by clicking on Block";
-            }
-            updateLastParam(xCenter, yCenter, X, Y);
-            context.beginPath();
-            context.arc(xCenter, yCenter, blockWidth, 0, 2 * Math.PI, false);
-            context.fillStyle = '#FFCDD2';
-            context.fill();
-            context.lineWidth = strokeWidth;
-            context.strokeStyle = '#003300';
-            context.stroke();
-        }
-        else if (numberOfTurns % 2 == 0 && positionMatrix[X][Y] == 1) {
-            //Player one just made a move, hence made a block green
-            ////////clickSound.play();
-            isActiveGreen = true;
-            if (checkThreeLeft(playerOneCode)) {
-                isGreenThreeLeft = true;
-                document.getElementById("message").innerHTML = "Green can now move anywhere (3 are left only)";
-            }
-            else {
-                document.getElementById("message").innerHTML = "Move one step by clicking on Block";
-            }
-            updateLastParam(xCenter, yCenter, X, Y);
-            context.beginPath();
-            context.arc(xCenter, yCenter, blockWidth, 0, 2 * Math.PI, false);
-            context.fillStyle = '#AED581';
-            context.fill();
-            context.lineWidth = strokeWidth;
-            context.strokeStyle = '#003300';
-            context.stroke();
         }
 
     }
-    //
-    // for (var r = 0; r < 7; r++) {
-    //     console.log(positionMatrix[0][r] + "\t" + positionMatrix[1][r] + "\t" + positionMatrix[2][r] + "\t" +
-    //         positionMatrix[3][r] + "\t" + positionMatrix[4][r] + "\t" + positionMatrix[5][r] + "\t" + positionMatrix[6][r]);
-    // }
-
-    checkGameOver();
-}
 
 canvas.addEventListener("click", mouseClick);
 
@@ -565,212 +423,16 @@ function drawBlock(x, y, X, Y) {
 
     isActiveGreen = false;
     isActiveRed = false;
-    numberOfTurns++;
     update();
 }
 
-function checkMill(x, y, playerCode) {
-    //Using the fact that two mills cannot occur simultaneously
-    var flag = 0;
-    var temp = 0;
-    //Transverse through the given row and column and check for mill
-    for (var i = 0; i < 5; i++) {
-        flag = 0;
-        for (var j = temp; j < temp + 3; j++) {
-            if (positionMatrix[j][y] == playerCode) {
-                continue;
-            } else {
-                flag = 1;
-                break;
-            }
-        }
-        if (flag == 0) {
-            //console.log("This is from : " + 1);
-            return true;
-        } else {
-            temp++;
-        }
-    }
 
-    flag = 0;
-    temp = 0;
-    //Now moving along the given column
-    for (var k = 0; k < 5; k++) {
-        flag = 0;
-        for (var l = temp; l < temp + 3; l++) {
-            if (positionMatrix[x][l] == playerCode) {
-                continue;
-            } else {
-                flag = 1;
-                break;
-            }
-        }
-        if (flag == 0) {
-            // console.log("This is from : " + 2);
-            return true;
-        } else {
-            temp++;
-        }
-    }
-
-    var check = true;
-    var oppositeCode = (playerCode == 1) ? 2 : 1;
-    for (var a = 0; a < 7; a++) {
-        if ((positionMatrix[a][y] == oppositeCode) || (positionMatrix[a][y] == 0)) {
-            check = false;
-            break;
-        }
-    }
-    if (check == true) {
-        //console.log("This is from : " + 3);
-        return true;
-    }
-    check = true;
-
-    for (var b = 0; b < 7; b++) {
-        //Check for any empty element of any element of anther type
-        if ((positionMatrix[x][b] == oppositeCode) || (positionMatrix[x][b] == 0)) {
-            check = false;
-            break;
-        }
-    }
-    if (check == true) {
-        //console.log("This is from : " + 4);
-        return true;
-    }
-
-    return false;
-}
-
-function checkThreeLeft(playerCode) {
-    return (numberOfTurns >= 18 && (((playerCode == 1) ? greenBlocks : redBlocks) == 3 ))
-}
-
-function checkGameOver() {
-    //If less than 3 players left of any team.
-    if (numberOfTurns >= 18) {
-        if (redBlocks < 3 || greenBlocks < 3) {
-            alert("Only 2 " + ((greenBlocks < 3) ? "Green" : "Red") + " blocks left !\n" +
-                "Hence, Player " + ((greenBlocks < 3) ? 2 : 1) + " wins !");
-            location.reload(true);
-        }
-        else {
-            //Check if no adjacent element available for any of the player.
-            if (!canMove(playerOneCode, greenBlocks)) {
-                alert("No possible moves left for Player " + playerOneCode + "\n" +
-                    "Hence, Player " + playerTwoCode + " wins !");
-                location.reload(true);
-            } else if (!canMove(playerTwoCode, redBlocks)) {
-                alert("No possible moves left for Player " + playerTwoCode + "\n" +
-                    "Hence, Player " + playerOneCode + " wins !");
-                location.reload(true);
-            }
-        }
-
-    }
-}
-
-function allArePartOfMill(playerCode) {
-    //return false if atleast one of them is not a part of the mill
-    for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < columns; j++) {
-            if (positionMatrix[i][j] == playerCode){
-                if (!checkMill(i, j, playerCode)) {
-                    return false;
-                }
-            }
-
-        }
-    }
-    return true;
-}
-function canMove(playerCode, blocksLeft) {
-    //If only 3 are left then it can always move anywhere
-    if (blocksLeft == 3) {
-        return true;
-    }
-    //return true even if one of them have at least one valid move left
-    for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < columns; j++) {
-            if (positionMatrix[j][i] == playerCode) {
-                //now move in all four directions until index becomes < 0 || >6
-                // or after -1's zero comes at the given position.
-
-                //Left
-                if (!(j == 4 && i == 3)) {
-                    for (var k = j - 1; k >= 0; k--) {
-                        if (positionMatrix[k][i] != -1) {
-                            if (positionMatrix[k][i] == 0) {
-                                return true;
-                            } else {
-                                //Adjacent piece is occupied by some block
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                //Top
-                if (!(j == 3 && i == 4)) {
-                    for (var l = i - 1; l >= 0; l--) {
-                        if (positionMatrix[j][l] != -1) {
-                            if (positionMatrix[j][l] == 0) {
-                                return true;
-                            } else {
-                                //Adjacent piece is occupied by some block
-                                break;
-                            }
-                        }
-                    }
-                }
-
-
-                //Right
-                if (!(j == 2 && i == 3)) {
-                    for (var m = j + 1; m < 7; m++) {
-                        if (positionMatrix[m][i] != -1) {
-                            if (positionMatrix[m][i] == 0) {
-                                return true;
-                            } else {
-                                //Adjacent piece is occupied by some block
-                                break;
-                            }
-                        }
-                    }
-                }
-
-
-                //Bottom
-                if (!(j == 3 && i == 2)) {
-                    for (var n = i + 1; n < 7; n++) {
-                        if (positionMatrix[j][n] != -1) {
-                            if (positionMatrix[j][n] == 0) {
-                                return true;
-                            } else {
-                                //Adjacent piece is occupied by some block
-                                break;
-                            }
-                        }
-                    }
-                }
-
-            }
-        }
-    }
-
-    return false;
-}
 
 function update() {
     //Update player turn
-    if (numberOfTurns % 2 != 0) {
-       alert("P2");
-    } else {
-        alert("P1");
-    }
-}
-    }
-    )
+
+   }
+ })
 })
 $( window ).load(function() {
 document.getElementById("AboutModal4").style.display="none";
