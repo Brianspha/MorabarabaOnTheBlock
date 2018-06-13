@@ -28,11 +28,13 @@ var referenceMatrix = new Array(7);
 var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
 var playerContract;
-var imageObj = new Image();
-imageObj.onload = function() {
-  context.drawImage(imageObj, 0, 0);
-};
-imageObj.src = 'https://scontent-jnb1-1.xx.fbcdn.net/v/t1.15752-9/34284674_1895296563848396_829723798243639296_n.png?_nc_cat=0&oh=51cfc1d3b853abc3cc48e6a152f379b0&oe=5BBFFB4B';
+//var block_filter = web3.eth.filter('latest');
+
+//var imageObj = new Image();
+///imageObj.onload = function() {
+  //context.drawImage(imageObj, 0, 0);
+//};
+//imageObj.src = 'https://doc-00-88-docs.googleusercontent.com/docs/securesc/ee9kjrt8v1bcno6bhe0qjjm8kae5lrrc/rk93spd9du574o9u3u9nm01a8m23sa8k/1528070400000/05227863570543217200/05227863570543217200/1S9b7wt0eGRoTyZ7gSyADOvk3Z--FCvVG?e=download&nonce=ghd09l3brejf0&user=05227863570543217200&hash=t220qg38o12dcnql4vm7nlpmnpjmft7f';
 //firstAccount = e[0];
  //console.log("A: " + firstAccount);
 //}) 
@@ -55,6 +57,9 @@ $("#SubmitBut").click(function(event){
         $('#myModalPlay').modal('toggle');
         var mother =document.getElementById("canvasmother");
         mother.appendChild(canvas);
+        document.getElementById("myCanvas").style.display="block";
+        var status=GetGameInitStatus();
+       alert(status);
     }
     else{ 
         alert("An error occured!");
@@ -91,6 +96,18 @@ function initializeGame() {
     //clickSound = new sound("");
     initializeArray();
     alert("Player 1 turns first followed by Player 2");
+}
+
+//@Dev checks against the smart contract if the game has been initialised or not
+function GetGameInitStatus()
+{
+    var status;
+    MorabarabaContract.methods.GameIntialisedStatus().call({from: account1,gas:7000000},function(err, value) 
+    {
+     alert(value);
+    status=value;
+    });
+    return status;
 }
 
 function sound(src) {
@@ -130,7 +147,7 @@ function initializeArray() {
 
 }
 
-function makeMove(X, Y) {
+function makeMove(X, Y,Index) {
     var yCenter;
     var xCenter;
 
@@ -292,45 +309,100 @@ function makeMove(X, Y) {
         }
     }
 
-
         //////clickSound.play();
         if (!Turn) {
             //Player two made a move, hence made a block red.
-            redBlocks++;
-            context.beginPath();
-            context.arc(xCenter, yCenter, blockWidth, 0, 2 * Math.PI, false);
-            context.fillStyle = '#F44336';
-            context.fill();
-            context.lineWidth = strokeWidth;
-            context.strokeStyle = '#003300';
-            context.stroke();
-            document.getElementById("turn").innerHTML = "P1";
-            Turn =!Turn;
-            MorabarabaContract.methods.MakeMove(account1,).call({from: account1,gas:3000000},function(err, value) {
-                if(value=="Player 2's Turn"){
+
+            MorabarabaContract.methods.MakeMove(account1,Index).call({from: account1,gas:5000000},function(err, value) {
+                if(value!="undefined" && value !="Game hasnt been initialised")
+                {
+                    redBlocks++;
+                    context.beginPath();
+                    context.arc(xCenter, yCenter, blockWidth, 0, 2 * Math.PI, false);
+                    context.fillStyle = '#F44336';
+                    context.fill();
+                    context.lineWidth = strokeWidth;
+                    context.strokeStyle = '#003300';
+                    context.stroke();
+                // document.getElementById("turn").innerHTML = "P1";
+                    Turn =!Turn;
+                    alert(err + " " + value)
                 }
-                else{
-                    alert(value);
+                else
+                {
+                    alert(value +"\n" +err);
+                    ReInitNewGame(account1,account2);
                 }
             });
-            
         }
         else {
             //Player one just made a move, hence made a block green
-            context.beginPath();
-            context.arc(xCenter, yCenter, blockWidth, 0, 2 * Math.PI, false);
-            context.fillStyle = '#2E7D32';
-            context.fill();
-            context.lineWidth = strokeWidth;
-            context.strokeStyle = '#003300';
-            context.stroke();
-            Turn=!Turn;
-            //alert("turn").innerHTML = "P2";
 
+            //alert("turn").innerHTML = "P2";
+            MorabarabaContract.methods.MakeMove(account2,Index).call({from: account2,gas:5000000},function(err, value) {
+                if(value!="undefined" && value !="Game hasnt been initialised")
+                {
+                    context.beginPath();
+                    context.arc(xCenter, yCenter, blockWidth, 0, 2 * Math.PI, false);
+                    context.fillStyle = '#2E7D32';
+                    context.fill();
+                    context.lineWidth = strokeWidth;
+                    context.strokeStyle = '#003300';
+                    context.stroke();
+                    Turn=!Turn;
+                    alert(err + " " + value)
+                }
+                else
+                {
+                    alert(value +"\n" +err);
+                    ReInitNewGame(account1,account2);
+                }
+            });
         }
+ //ScanBlocks();
+    }
+function ReInitNewGame(account1,account2)
+{
+    MorabarabaContract.methods.NewGame(account1,account2).call({from: account1,gas:3000000},function(err, value) {
+        if(value){
+        alert(value)
+        $('#myModal').modal('hide');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        $('#myModalPlay').modal('toggle');
+        var mother =document.getElementById("canvasmother");
+        mother.appendChild(canvas);
+        document.getElementById("myCanvas").style.display="block";
+        var status=GetGameInitStatus();
 
     }
-
+    else{ 
+        alert("An error occured!");
+    }
+    
+       // Setup the game board etc..   
+      });   
+}
+function ScanBlocks()
+{
+    for(var i = 4905820; i < 4905822; i++) {
+        var Block=web3.eth.getBlock(i);
+        console.log("blocknumuer: " + i);
+        if (Block.transactions!=null && Block!=null)
+        {
+        Block.transactions.forEach(function (e)
+        {
+        var getT=web3.eth.getTransaction(e);
+        var Tdata=web3.toAscii(getT.input);
+        if(getT.to=="needed Address")
+        {
+        console.log("find");
+        }
+        //console.log(getT.to);
+        });
+        }
+    }
+}
 canvas.addEventListener("click", mouseClick);
 
 function mouseClick(event) {
@@ -341,60 +413,60 @@ function mouseClick(event) {
     //Check if touch event occurs in canvas or not
     if ((X >= 0 && X <= 550) && (Y >= 0 && Y <= 550)) {
         if ((X >= 0 && X <= 75) && (Y >= 0 && Y <= 75)) {
-            makeMove(0, 0);
+            makeMove(0, 0, 0);
         } else if ((X >= 235 && X <= 315) && (Y >= 0 && Y <= 75)) {
-            makeMove(3, 0);
+            makeMove(3, 0, 1);
         } else if ((X >= 475 && X <= 550) && (Y >= 0 && Y <= 75)) {
-            makeMove(6, 0);
+            makeMove(6, 0, 2);
         }
         else if ((X >= 75 && X <= 155) && (Y >= 75 && Y <= 155)) {
-            makeMove(1, 1);
+            makeMove(1, 1, 3);
         } else if ((X >= 235 && X <= 315) && (Y >= 75 && Y <= 155)) {
-            makeMove(3, 1);
+            makeMove(3, 1, 4);
         } else if ((X >= 395 && X <= 475) && (Y >= 75 && Y <= 155)) {
-            makeMove(5, 1);
+            makeMove(5, 1, 5);
         }
         else if ((X >= 155 && X <= 235) && (Y >= 155 && Y <= 235)) {
-            makeMove(2, 2);
+            makeMove(2, 2, 6);
         } else if ((X >= 235 && X <= 315) && (Y >= 155 && Y <= 235)) {
-            makeMove(3, 2);
+            makeMove(3, 2, 7);
         } else if ((X >= 315 && X <= 395) && (Y >= 155 && Y <= 235)) {
-            makeMove(4, 2);
+            makeMove(4, 2, 8);
         }
         else if ((X >= 0 && X <= 75) && (Y >= 235 && Y <= 315)) {
-            makeMove(0, 3);
+            makeMove(0, 3, 9);
         } else if ((X >= 75 && X <= 155) && (Y >= 235 && Y <= 315)) {
-            makeMove(1, 3);
+            makeMove(1, 3, 10);
         } else if ((X >= 155 && X <= 235) && (Y >= 235 && Y <= 315)) {
-            makeMove(2, 3);
+            makeMove(2, 3, 11);
         } else if ((X >= 315 && X <= 395) && (Y >= 235 && Y <= 315)) {
-            makeMove(4, 3);
+            makeMove(4, 3, 12);
         } else if ((X >= 395 && X <= 475) && (Y >= 235 && Y <= 315)) {
-            makeMove(5, 3);
+            makeMove(5, 3, 13);
         } else if ((X >= 475 && X <= 550) && (Y >= 235 && Y <= 315)) {
-            makeMove(6, 3);
+            makeMove(6, 3, 14);
         }
         else if ((X >= 155 && X <= 235) && (Y >= 315 && Y <= 395)) {
-            makeMove(2, 4);
+            makeMove(2, 4, 15);
         } else if ((X >= 235 && X <= 315) && (Y >= 315 && Y <= 395)) {
-            makeMove(3, 4);
+            makeMove(3, 4, 16);
         } else if ((X >= 315 && X <= 395) && (Y >= 315 && Y <= 395)) {
-            makeMove(4, 4);
+            makeMove(4, 4, 17);
         }
         else if ((X >= 75 && X <= 155) && (Y >= 395 && Y <= 475)) {
-            makeMove(1, 5);
+            makeMove(1, 5, 18);
         } else if ((X >= 235 && X <= 315) && (Y >= 395 && Y <= 475)) {
-            makeMove(3, 5);
+            makeMove(3, 5, 19);
         } else if ((X >= 395 && X <= 475) && (Y >= 395 && Y <= 475)) {
-            makeMove(5, 5);
+            makeMove(5, 5, 20);
         }
 
         else if ((X >= 0 && X <= 75) && (Y >= 475 && Y <= 550)) {
-            makeMove(0, 6);
+            makeMove(0, 6, 21);
         } else if ((X >= 235 && X <= 315) && (Y >= 475 && Y <= 550)) {
-            makeMove(3, 6);
+            makeMove(3, 6, 22);
         } else if ((X >= 475 && X <= 550) && (Y >= 475 && Y <= 550)) {
-            makeMove(6, 6);
+            makeMove(6, 6, 23);
         }
     }
 }

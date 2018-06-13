@@ -22,7 +22,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/agency.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/w3schools.css">
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -30,7 +30,8 @@
 
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+    <!-- Abi Decoder Script -->
+  <script src="js/abi-decoder.js"></script>
     <!-- Contact form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
 
@@ -452,7 +453,9 @@
        
       </div>
     </div>
-  </div><canvas id="myCanvas" width="630" height="630">
+    <!-- Had to use inline styling using style sheet didnt work see stylesheet.css the image would not get rendered onto the canvas-->
+  </div><canvas id="myCanvas" width="630" height="630" style="background: url('main.png'); background-size: contain;
+  background-repeat:no-repeat; ">
                 Your browser does not support the HTML5 canvas tag.
             </canvas>
     <!-- Bootstrap core JavaScript -->

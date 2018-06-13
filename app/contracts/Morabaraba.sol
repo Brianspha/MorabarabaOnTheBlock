@@ -65,12 +65,13 @@ uint256 SessionIdCount=0;
 Board brd = Board(24,true,0);
 event GeneralLogger (string message);
 //@Dev Constructor
-function Constructor() private
+//Note: For some odd reason itsthrowing because it thinks im sending ethers in my Constructor Odd
+function Constructor() public payable 
 {
     emit GeneralLogger("Constructor Called.");
 }
 //@Dev Responsible for starting a new game 
-function NewGame(address one,address two) public returns (bool success)
+function NewGame(address one,address two) public returns (string success)
 {
   require(one !=address(0));
   require (two != address(0));//Malicious address
@@ -88,9 +89,9 @@ function NewGame(address one,address two) public returns (bool success)
       brd.InternalBoard[a]=nodes[a];
   }
   currentGameSession=Morabaraba(true,p1,p2,brd,one,two,SessionIdCount++,true);
-  success =true;
-    emit GeneralLogger("Successfully created new game.");
-
+  emit GeneralLogger("Successfully created new game.");
+  success="Successfully created new game.";
+  return success;
 }
 //@Dev makes a move given a players address as well the desired position
 function MakeMove(address player,uint256 position) public returns (string message)
@@ -99,7 +100,9 @@ function MakeMove(address player,uint256 position) public returns (string messag
     {
      message="Game hasnt been initialised";
      emit GeneralLogger(message);
+     return message;
     }
+    emit GeneralLogger("Game initialised check");
     if(player ==address(0))
     {
     message="Invalid Address";
@@ -110,6 +113,8 @@ function MakeMove(address player,uint256 position) public returns (string messag
         message="Invalid Position";
         return message;
     }
+    emit GeneralLogger("Players address validation Successfully");
+    emit GeneralLogger("Position validation successful");
     bool currentTurn = currentGameSession.Turn;
     if(currentTurn)
     {
@@ -141,6 +146,7 @@ function MakeMove(address player,uint256 position) public returns (string messag
       uint256 b;
       uint256 c;
       (a,b,c) = CheckForMill(player,position);
+          emit GeneralLogger("Checked for Mill Successfully");
       if(a !=25 && b!=25 &&c !=25)//25 indicates not mill was found 25 is out of bounds of the game 
       {
         if(currentTurn)
@@ -158,27 +164,70 @@ function MakeMove(address player,uint256 position) public returns (string messag
         emit GeneralLogger("Move Made.");
 }
 //@Dev Checks if the player has formed a mill or not
-function CheckForMill (address player,uint256 node) public view returns (uint256 a,uint256 b ,uint256 c)
+function CheckForMill (address player,uint node) public  returns (uint a,uint b ,uint c)
 {
   require(player != address(0));
   require(node >=0 && node <24);
-  require(currentGameSession.CurrentBoard.Activated);
-  require(currentGameSession.CurrentBoard.PlacedSoFar >=5);//we only check for mills after 5 pieces hae been placed
+ // require(currentGameSession.CurrentBoard.Activated);
+  if(currentGameSession.CurrentBoard.PlacedSoFar <5)
+  {
+    return (25,25,25);//Nothing found
+  }//we only check for mills after 5 pieces hae been placed
   bool found =false;
   uint256 [] memory Adjacents = GetAdjacentMills(node);
-  for(uint i =0; i < Adjacents.length-2;i++)
+  Node memory n1= currentGameSession.CurrentBoard.InternalBoard[Adjacents[0]];
+  Node memory n2= currentGameSession.CurrentBoard.InternalBoard[Adjacents[1]];
+  Node memory n3= currentGameSession.CurrentBoard.InternalBoard[Adjacents[2]];
+  if(Adjacents.length==6)
   {
-    Node memory n1= currentGameSession.CurrentBoard.InternalBoard[i];
-    Node memory n2= currentGameSession.CurrentBoard.InternalBoard[i+1];
-    Node memory n3= currentGameSession.CurrentBoard.InternalBoard[i+2];
+    emit GeneralLogger("Checking for Mill");
     if(n1.InAMill && n2.InAMill && n3.InAMill)
     {
      a=n1.Index;
      b=n2.Index;
      c=n3.Index;
      found=true;
-     break;
     }
+    else
+    {
+       n1 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[3]];  
+       n2 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[4]];    
+       n3 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[5]];
+       a=n1.Index;
+       b=n2.Index;
+       c=n3.Index;
+       found =n1.InAMill && n2.InAMill &&n3.InAMill;
+    }
+  }
+  else
+  {
+       n1 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[0]];  
+       n2 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[1]];    
+       n3 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[2]];
+       a=n1.Index;
+       b=n2.Index;
+       c=n3.Index;
+       found =n1.InAMill && n2.InAMill &&n3.InAMill;
+       if(!found)
+       {
+       n1 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[3]];  
+       n2 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[4]];    
+       n3 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[5]];
+       a=n1.Index;
+       b=n2.Index;
+       c=n3.Index;
+       found =n1.InAMill && n2.InAMill &&n3.InAMill;
+       }
+       if(!found)
+       {
+       n1 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[6]];  
+       n2 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[7]];    
+       n3 = currentGameSession.CurrentBoard.InternalBoard[Adjacents[8]];
+       a=n1.Index;
+       b=n2.Index;
+       c=n3.Index;
+       found =n1.InAMill && n2.InAMill &&n3.InAMill;
+       }
   }
   if(found)
   {
@@ -187,10 +236,20 @@ function CheckForMill (address player,uint256 node) public view returns (uint256
   return (25,25,25);//Nothing found
 
 }
+
+//@Dev returns the status of the current session if its been activated or not
+function GameIntialisedStatus() view returns (bool status)
+{
+  status=currentGameSession.Activated;
+}
+
 //@Dev gets all Adjacent mills given an index
-function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes)
+//@Dev Note: For some reason the only way this could was to have a return statement inside each if statement
+//@Dev I tried having one at the end of all the if statement but that throws a vm gas estimation error
+function GetAdjacentMills(uint position)  view returns (uint [] )
 {
     require(position >=0);
+    uint [] memory Indexes = new uint[](9);    
     if(position==0)
     {
       Indexes[0]=1;
@@ -202,6 +261,7 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
       Indexes[6]=9;
       Indexes[7]=21;
       Indexes[8]=0;  
+      return Indexes;
     }
     if(position==1)
     {
@@ -211,6 +271,7 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
       Indexes[3]=4;
       Indexes[4]=7;
       Indexes[5]=1;
+      return Indexes;
     }
     if(position==2)
     {
@@ -223,6 +284,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
      Indexes[6]=14;
      Indexes[7]=23;
      Indexes[8]=2;
+     return Indexes;
+
     }
    else if(position==3)
     {
@@ -235,6 +298,7 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
         Indexes[6]=18;
         Indexes[7]=10;
         Indexes[8]=3;
+        return Indexes;
     }
     else if(position==4)
     {
@@ -244,6 +308,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
      Indexes[3]=3;
      Indexes[4]=5;
      Indexes[5]=4;
+     return Indexes;
+ 
     }
     else if(position==5)
     {
@@ -256,6 +322,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
      Indexes[6]=13;
      Indexes[7]=20;
      Indexes[8]=5;
+      return Indexes;
+
     }
     else if(position==6)
     {
@@ -268,6 +336,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
       Indexes[6]=11;
       Indexes[7]=15;
       Indexes[8]=6;
+       return Indexes;
+
     }
     else if(position==7)
     {
@@ -277,6 +347,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
      Indexes[3]=4;
      Indexes[4]=1;
      Indexes[5]=7;
+      return Indexes;
+
     }
     else if(position==8)
     {
@@ -289,6 +361,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
      Indexes[6]=6;
      Indexes[7]=7;
      Indexes[8]=8;
+      return Indexes;
+
     }
     else if(position==9)
     {
@@ -298,6 +372,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
      Indexes[3]=0;
      Indexes[4]=21;
      Indexes[5]=9;
+      return Indexes;
+
     }
     else if(position==11)
     {
@@ -307,6 +383,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
      Indexes[3]=3;
      Indexes[4]=18;
      Indexes[5]=10;
+      return Indexes;
+
     }
     else if(position==12)
     {
@@ -316,6 +394,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
      Indexes[3]=13;
      Indexes[4]=14;
      Indexes[5]=12;
+      return Indexes;
+
     }
     else if(position==13)
     {
@@ -325,6 +405,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
     Indexes[3]=5;
     Indexes[4]=20;
     Indexes[5]=13;
+     return Indexes;
+
     }
     else if(position==14)
     {
@@ -334,6 +416,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
         Indexes[3]=2;
         Indexes[4]=23;
         Indexes[5]=14;
+         return Indexes;
+
     }
     else if(position==15)
     {
@@ -346,6 +430,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
        Indexes[6]=18;
        Indexes[7]=21;
        Indexes[8]=15;
+        return Indexes;
+
     }
     else if(position==16)
     {
@@ -355,6 +441,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
      Indexes[3]=19;
      Indexes[4]=22;
      Indexes[5]=16;
+    return Indexes;
+
     }
     else if(position==17)
     {
@@ -367,6 +455,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
      Indexes[6]=20;
      Indexes[7]=23;
      Indexes[8]=17;
+     return Indexes;
+
     }
     else if(position==18)
     {
@@ -379,6 +469,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
       Indexes[6]=21;
       Indexes[7]=15;
       Indexes[8]=18;
+       return Indexes;
+
     }
     else if(position==19)
     {
@@ -388,6 +480,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
        Indexes[3]=16;
        Indexes[4]=22;
        Indexes[5]=19;
+        return Indexes;
+
     }
     else if(position==20)
     {
@@ -400,6 +494,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
       Indexes[6]=13;
       Indexes[7]=5;
       Indexes[8]=20;
+       return Indexes;
+
     }
     else if(position==21)
     {
@@ -412,6 +508,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
      Indexes[6]=18;
      Indexes[7]=15;
      Indexes[8]=21;
+      return Indexes;
+
     }
     else if(position==22)
     {
@@ -421,6 +519,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
     Indexes[3]=19;
     Indexes[4]=16;
     Indexes[5]=22;
+     return Indexes;
+
     }
     else if(position==23)
     {
@@ -433,8 +533,8 @@ function GetAdjacentMills(uint256 position) public pure returns (uint [] Indexes
       Indexes[6]=14;
       Indexes[7]=2;
       Indexes[8]=23;
+       return Indexes;
     }
-
 }
 
 
